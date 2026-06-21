@@ -1,6 +1,6 @@
 "use client";
 
-import { Terminal, Heart, Mail, Phone, MapPin, ArrowUp } from "lucide-react";
+import { ArrowUp } from "lucide-react";
 import { WhatsAppIcon } from "@/components/portfolio/whatsapp-icon";
 import { profile, sectionMeta, socials } from "@/lib/portfolio-data";
 
@@ -17,18 +17,16 @@ export function Footer() {
   };
 
   return (
-    <footer className="relative mt-auto border-t border-border bg-card/50">
-      <div className="mx-auto max-w-6xl px-4 py-12 sm:px-6 lg:px-8">
-        <div className="grid gap-10 md:grid-cols-[1.5fr_1fr_1.2fr]">
+    <footer className="mt-auto border-t border-border bg-background">
+      <div className="mx-auto max-w-6xl px-5 py-14 sm:px-8 lg:px-8">
+        <div className="grid gap-10 sm:grid-cols-2 lg:grid-cols-[1.6fr_1fr_1.2fr]">
           {/* Brand */}
           <div>
-            <div className="flex items-center gap-2.5">
-              <span className="flex h-9 w-9 items-center justify-center rounded-xl bg-primary text-primary-foreground shadow-md shadow-primary/20">
-                <Terminal className="h-5 w-5" />
+            <div className="flex items-baseline gap-1.5">
+              <span className="text-base font-semibold tracking-tight text-foreground">
+                Tahmid Ta-Seen
               </span>
-              <span className="text-base font-bold text-foreground">
-                {profile.name}
-              </span>
+              <span className="h-1.5 w-1.5 rounded-full bg-primary" />
             </div>
             <p className="mt-4 max-w-sm text-sm leading-relaxed text-muted-foreground">
               {profile.title} based in Dhaka, Bangladesh — passionate about IT
@@ -43,7 +41,7 @@ export function Footer() {
                   target="_blank"
                   rel="noopener noreferrer"
                   aria-label={s.label}
-                  className="flex h-9 w-9 items-center justify-center rounded-lg border border-border bg-background text-muted-foreground transition-all hover:-translate-y-0.5 hover:border-primary hover:text-primary"
+                  className="flex h-9 w-9 items-center justify-center rounded-md border border-border text-muted-foreground transition-colors hover:border-foreground/30 hover:text-foreground"
                 >
                   <s.icon className="h-4 w-4" />
                 </a>
@@ -53,15 +51,15 @@ export function Footer() {
 
           {/* Quick links */}
           <div>
-            <h4 className="text-sm font-bold uppercase tracking-wider text-foreground">
+            <h4 className="text-[11px] font-semibold uppercase tracking-[0.16em] text-muted-foreground">
               Navigate
             </h4>
-            <ul className="mt-4 space-y-2.5">
+            <ul className="mt-4 space-y-2">
               {sectionMeta.slice(1).map((item) => (
                 <li key={item.id}>
                   <button
                     onClick={() => handleNav(item.id)}
-                    className="text-sm text-muted-foreground transition-colors hover:text-primary"
+                    className="text-sm text-muted-foreground transition-colors hover:text-foreground"
                   >
                     {item.label}
                   </button>
@@ -72,17 +70,16 @@ export function Footer() {
 
           {/* Contact */}
           <div>
-            <h4 className="text-sm font-bold uppercase tracking-wider text-foreground">
+            <h4 className="text-[11px] font-semibold uppercase tracking-[0.16em] text-muted-foreground">
               Contact
             </h4>
-            <ul className="mt-4 space-y-2.5 text-sm">
+            <ul className="mt-4 space-y-2 text-sm">
               <li>
                 <a
                   href={`mailto:${profile.email}`}
-                  className="flex items-center gap-2 text-muted-foreground transition-colors hover:text-primary"
+                  className="text-muted-foreground transition-colors hover:text-foreground"
                 >
-                  <Mail className="h-4 w-4 shrink-0" />
-                  <span className="break-all">{profile.email}</span>
+                  {profile.email}
                 </a>
               </li>
               <li>
@@ -90,39 +87,25 @@ export function Footer() {
                   href={profile.whatsappLink}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="flex items-center gap-2 text-muted-foreground transition-colors hover:text-primary"
+                  className="flex items-center gap-2 text-muted-foreground transition-colors hover:text-foreground"
                 >
-                  <WhatsAppIcon className="h-4 w-4 shrink-0" />
-                  <span>{profile.phoneDisplay}</span>
+                  <WhatsAppIcon className="h-3.5 w-3.5" />
+                  {profile.phoneDisplay}
                 </a>
               </li>
-              <li>
-                <a
-                  href={`tel:${profile.phoneDigits}`}
-                  className="flex items-center gap-2 text-muted-foreground transition-colors hover:text-primary"
-                >
-                  <Phone className="h-4 w-4 shrink-0" />
-                  <span>Call {profile.phoneDisplay}</span>
-                </a>
-              </li>
-              <li className="flex items-start gap-2 text-muted-foreground">
-                <MapPin className="mt-0.5 h-4 w-4 shrink-0" />
-                <span>{profile.location}</span>
-              </li>
+              <li className="text-muted-foreground">{profile.location}</li>
             </ul>
           </div>
         </div>
 
-        <div className="mt-10 flex flex-col items-center justify-between gap-4 border-t border-border pt-6 sm:flex-row">
-          <p className="text-center text-xs text-muted-foreground sm:text-left">
-            © {year} {profile.name}. Crafted with{" "}
-            <Heart className="inline h-3 w-3 fill-primary text-primary" /> and a
-            genuine enthusiasm to work with you.
+        <div className="mt-12 flex flex-col items-center justify-between gap-4 border-t border-border pt-6 sm:flex-row">
+          <p className="text-xs text-muted-foreground">
+            © {year} {profile.name}. All rights reserved.
           </p>
           <button
             onClick={scrollTop}
             aria-label="Back to top"
-            className="flex items-center gap-1.5 rounded-full border border-border bg-background px-3 py-1.5 text-xs font-medium text-muted-foreground transition-all hover:-translate-y-0.5 hover:border-primary hover:text-primary"
+            className="flex items-center gap-1.5 text-xs font-medium text-muted-foreground transition-colors hover:text-foreground"
           >
             <ArrowUp className="h-3.5 w-3.5" />
             Back to top

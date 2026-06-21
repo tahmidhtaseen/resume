@@ -1,33 +1,27 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { Quote, Heart, Users, Target, Zap } from "lucide-react";
 import { SectionHeading } from "@/components/portfolio/section-heading";
-import { Card, CardContent } from "@/components/ui/card";
 import { profile, languages } from "@/lib/portfolio-data";
 
 const values = [
   {
-    icon: Heart,
-    title: "Genuine Passion",
+    title: "Genuine passion",
     description:
       "I truly enjoy the craft of IT — every ticket solved and every network configured fuels my curiosity.",
   },
   {
-    icon: Users,
-    title: "Team-First Mindset",
+    title: "Team-first mindset",
     description:
       "I thrive in collaboration. From engineers to end-users, I communicate clearly and listen carefully.",
   },
   {
-    icon: Target,
-    title: "Reliable Delivery",
+    title: "Reliable delivery",
     description:
       "Whether it's a quick fix or a nationwide deployment, I take ownership and see things through.",
   },
   {
-    icon: Zap,
-    title: "Always Learning",
+    title: "Always learning",
     description:
       "Technology never stands still, and neither do I. I'm continuously leveling up my skills.",
   },
@@ -35,126 +29,122 @@ const values = [
 
 export function About() {
   return (
-    <section id="about" className="relative py-20 sm:py-28">
-      <div className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
+    <section id="about" className="relative border-t border-border py-20 sm:py-28">
+      <div className="mx-auto max-w-6xl px-5 sm:px-8 lg:px-8">
         <SectionHeading
-          eyebrow="About Me"
-          title="Enthusiastic by nature, professional by choice"
+          eyebrow="About"
+          title="Enthusiastic by nature, professional by choice."
           description="Get to know the person behind the certifications — what drives me and how I approach my work."
         />
 
-        <div className="mt-14 grid gap-8 lg:grid-cols-[1.4fr_1fr]">
+        <div className="mt-14 grid gap-12 lg:grid-cols-[1.4fr_1fr] lg:gap-16">
           {/* Story */}
           <motion.div
-            initial={{ opacity: 0, y: 24 }}
+            initial={{ opacity: 0, y: 16 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, margin: "-80px" }}
             transition={{ duration: 0.5 }}
           >
-            <Card className="h-full overflow-hidden border-border/70">
-              <CardContent className="p-6 sm:p-8">
-                <Quote className="h-8 w-8 text-primary/30" />
-                <p className="mt-4 text-lg leading-relaxed text-foreground/90">
-                  {profile.summary}
-                </p>
-                <div className="mt-6 rounded-2xl border border-amber-400/30 bg-amber-400/5 p-5">
-                  <p className="text-base leading-relaxed text-foreground/90">
-                    <span className="font-semibold text-amber-600 dark:text-amber-400">
-                      My promise:
-                    </span>{" "}
-                    {profile.enthusiasm}
-                  </p>
-                </div>
-              </CardContent>
-            </Card>
+            <p className="text-lg leading-relaxed text-foreground/90">
+              {profile.summary}
+            </p>
+            <div className="mt-6 border-l-2 border-primary/40 pl-5">
+              <p className="text-[15px] leading-relaxed text-muted-foreground">
+                <span className="font-semibold text-foreground">
+                  My promise:
+                </span>{" "}
+                {profile.enthusiasm}
+              </p>
+            </div>
           </motion.div>
 
           {/* Languages + quick facts */}
           <motion.div
-            initial={{ opacity: 0, y: 24 }}
+            initial={{ opacity: 0, y: 16 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, margin: "-80px" }}
             transition={{ duration: 0.5, delay: 0.1 }}
-            className="flex flex-col gap-6"
+            className="flex flex-col gap-8"
           >
-            <Card className="border-border/70">
-              <CardContent className="p-6">
-                <h3 className="text-base font-bold text-foreground">Languages</h3>
-                <div className="mt-4 space-y-4">
-                  {languages.map((lang) => (
-                    <div key={lang.name}>
-                      <div className="flex items-center justify-between text-sm">
-                        <span className="font-semibold text-foreground">
-                          {lang.name}
-                        </span>
-                        <span className="text-muted-foreground">{lang.level}</span>
-                      </div>
-                      <div className="mt-2 h-2 w-full overflow-hidden rounded-full bg-muted">
-                        <motion.div
-                          initial={{ width: 0 }}
-                          whileInView={{ width: `${lang.proficiency}%` }}
-                          viewport={{ once: true }}
-                          transition={{ duration: 1, ease: "easeOut" }}
-                          className="h-full rounded-full bg-gradient-to-r from-primary to-emerald-500"
-                        />
-                      </div>
+            <div>
+              <h3 className="text-[11px] font-semibold uppercase tracking-[0.16em] text-muted-foreground">
+                Languages
+              </h3>
+              <div className="mt-4 space-y-4">
+                {languages.map((lang) => (
+                  <div key={lang.name}>
+                    <div className="flex items-center justify-between text-sm">
+                      <span className="font-medium text-foreground">
+                        {lang.name}
+                      </span>
+                      <span className="text-muted-foreground">{lang.level}</span>
                     </div>
-                  ))}
-                </div>
-              </CardContent>
-            </Card>
+                    <div className="mt-2 h-1 w-full overflow-hidden rounded-full bg-muted">
+                      <motion.div
+                        initial={{ width: 0 }}
+                        whileInView={{ width: `${lang.proficiency}%` }}
+                        viewport={{ once: true }}
+                        transition={{ duration: 1, ease: "easeOut" }}
+                        className="h-full rounded-full bg-primary"
+                      />
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </div>
 
-            <Card className="border-border/70">
-              <CardContent className="p-6">
-                <h3 className="text-base font-bold text-foreground">Quick Facts</h3>
-                <dl className="mt-4 space-y-3 text-sm">
-                  <div className="flex justify-between gap-4">
-                    <dt className="text-muted-foreground">Based in</dt>
-                    <dd className="font-medium text-foreground">Dhaka, Bangladesh</dd>
-                  </div>
-                  <div className="flex justify-between gap-4">
-                    <dt className="text-muted-foreground">Nationality</dt>
-                    <dd className="font-medium text-foreground">{profile.nationality}</dd>
-                  </div>
-                  <div className="flex justify-between gap-4">
-                    <dt className="text-muted-foreground">Focus</dt>
-                    <dd className="font-medium text-foreground">IT Support & Networks</dd>
-                  </div>
-                  <div className="flex justify-between gap-4">
-                    <dt className="text-muted-foreground">Status</dt>
-                    <dd className="font-medium text-emerald-600 dark:text-emerald-400">
-                      Open to work
+            <div>
+              <h3 className="text-[11px] font-semibold uppercase tracking-[0.16em] text-muted-foreground">
+                Quick facts
+              </h3>
+              <dl className="mt-4 divide-y divide-border">
+                {[
+                  ["Based in", "Dhaka, Bangladesh"],
+                  ["Nationality", profile.nationality],
+                  ["Focus", "IT Support & Networks"],
+                  ["Status", "Open to work"],
+                ].map(([k, v]) => (
+                  <div
+                    key={k}
+                    className="flex items-center justify-between gap-4 py-2.5 text-sm"
+                  >
+                    <dt className="text-muted-foreground">{k}</dt>
+                    <dd
+                      className={
+                        k === "Status"
+                          ? "font-medium text-primary"
+                          : "font-medium text-foreground"
+                      }
+                    >
+                      {v}
                     </dd>
                   </div>
-                </dl>
-              </CardContent>
-            </Card>
+                ))}
+              </dl>
+            </div>
           </motion.div>
         </div>
 
         {/* Values */}
-        <div className="mt-12 grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
+        <div className="mt-16 grid gap-px overflow-hidden rounded-xl border border-border bg-border sm:grid-cols-2 lg:grid-cols-4">
           {values.map((v, i) => (
             <motion.div
               key={v.title}
-              initial={{ opacity: 0, y: 24 }}
+              initial={{ opacity: 0, y: 16 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, margin: "-60px" }}
-              transition={{ duration: 0.45, delay: i * 0.08 }}
+              transition={{ duration: 0.45, delay: i * 0.06 }}
+              className="bg-card p-6"
             >
-              <Card className="group h-full border-border/70 transition-all hover:-translate-y-1 hover:border-primary/40 hover:shadow-lg">
-                <CardContent className="p-5">
-                  <div className="flex h-11 w-11 items-center justify-center rounded-xl bg-primary/10 text-primary transition-colors group-hover:bg-primary group-hover:text-primary-foreground">
-                    <v.icon className="h-5 w-5" />
-                  </div>
-                  <h4 className="mt-4 text-base font-bold text-foreground">
-                    {v.title}
-                  </h4>
-                  <p className="mt-2 text-sm leading-relaxed text-muted-foreground">
-                    {v.description}
-                  </p>
-                </CardContent>
-              </Card>
+              <span className="text-xs font-medium text-primary">
+                0{i + 1}
+              </span>
+              <h4 className="mt-3 text-base font-semibold text-foreground">
+                {v.title}
+              </h4>
+              <p className="mt-2 text-sm leading-relaxed text-muted-foreground">
+                {v.description}
+              </p>
             </motion.div>
           ))}
         </div>

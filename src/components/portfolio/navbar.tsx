@@ -3,7 +3,7 @@
 import * as React from "react";
 import Link from "next/link";
 import { motion, AnimatePresence } from "framer-motion";
-import { Menu, X, Terminal } from "lucide-react";
+import { Menu, X } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { ThemeToggle } from "@/components/portfolio/theme-toggle";
 import { WhatsAppIcon } from "@/components/portfolio/whatsapp-icon";
@@ -49,71 +49,68 @@ export function Navbar() {
       className={cn(
         "fixed inset-x-0 top-0 z-50 transition-all duration-300",
         scrolled
-          ? "border-b border-border/60 bg-background/80 backdrop-blur-xl shadow-sm"
+          ? "border-b border-border bg-background/80 backdrop-blur-xl"
           : "border-b border-transparent bg-transparent",
       )}
     >
-      <nav className="mx-auto flex h-16 max-w-6xl items-center justify-between px-4 sm:px-6 lg:px-8">
+      <nav className="mx-auto flex h-16 max-w-6xl items-center justify-between px-5 sm:px-8 lg:px-8">
+        {/* Refined wordmark — no icon box */}
         <Link
           href="#home"
           onClick={(e) => {
             e.preventDefault();
             handleNav("home");
           }}
-          className="group flex items-center gap-2.5"
+          className="group flex items-baseline gap-1.5"
         >
-          <span className="flex h-9 w-9 items-center justify-center rounded-xl bg-primary text-primary-foreground shadow-md shadow-primary/20 transition-transform group-hover:scale-105">
-            <Terminal className="h-5 w-5" />
+          <span className="text-[15px] font-semibold tracking-tight text-foreground">
+            Tahmid Ta-Seen
           </span>
-          <span className="hidden text-sm font-bold tracking-tight text-foreground sm:block">
-            {profile.firstName}
-            <span className="text-primary">.</span>
-            {profile.lastName.split("-")[0]}
-          </span>
+          <span className="h-1.5 w-1.5 rounded-full bg-primary transition-transform group-hover:scale-125" />
         </Link>
 
         {/* Desktop nav */}
-        <div className="hidden items-center gap-1 md:flex">
+        <div className="hidden items-center gap-0.5 md:flex">
           {sectionMeta.slice(1, -1).map((item) => (
             <button
               key={item.id}
               onClick={() => handleNav(item.id)}
               className={cn(
-                "relative rounded-full px-3.5 py-2 text-sm font-medium transition-colors",
+                "relative rounded-md px-3 py-1.5 text-[13px] font-medium transition-colors",
                 active === item.id
-                  ? "text-primary"
+                  ? "text-foreground"
                   : "text-muted-foreground hover:text-foreground",
               )}
             >
+              {item.label}
               {active === item.id && (
                 <motion.span
-                  layoutId="nav-pill"
-                  className="absolute inset-0 rounded-full bg-primary/10"
+                  layoutId="nav-underline"
+                  className="absolute inset-x-3 -bottom-0.5 h-px bg-primary"
                   transition={{ type: "spring", stiffness: 380, damping: 30 }}
                 />
               )}
-              <span className="relative z-10">{item.label}</span>
             </button>
           ))}
         </div>
 
-        <div className="flex items-center gap-1.5">
+        <div className="flex items-center gap-1">
           <ThemeToggle />
           <a
             href={profile.whatsappLink}
             target="_blank"
             rel="noopener noreferrer"
             aria-label="Chat on WhatsApp"
-            className="flex h-9 w-9 items-center justify-center rounded-full bg-[#25D366] text-white shadow-md shadow-[#25D366]/30 transition-transform hover:scale-105"
+            className="hidden h-9 w-9 items-center justify-center rounded-md border border-border text-muted-foreground transition-colors hover:border-foreground/30 hover:text-foreground sm:flex"
           >
-            <WhatsAppIcon className="h-[18px] w-[18px]" />
+            <WhatsAppIcon className="h-[17px] w-[17px]" />
           </a>
           <Button
             size="sm"
             onClick={() => handleNav("contact")}
-            className="hidden rounded-full shadow-md shadow-primary/20 sm:inline-flex"
+            className="hidden h-9 rounded-md px-4 text-[13px] md:inline-flex"
           >
-            Let&apos;s Talk
+            Get in touch
           </Button>
           <Button
             variant="ghost"
@@ -135,33 +132,41 @@ export function Navbar() {
             animate={{ opacity: 1, height: "auto" }}
             exit={{ opacity: 0, height: 0 }}
             transition={{ duration: 0.25, ease: "easeInOut" }}
-            className="overflow-hidden border-b border-border/60 bg-background/95 backdrop-blur-xl md:hidden"
+            className="overflow-hidden border-b border-border bg-background/95 backdrop-blur-xl md:hidden"
           >
-            <div className="flex flex-col gap-1 px-4 py-4">
+            <div className="flex flex-col gap-0.5 px-5 py-4">
               {sectionMeta.slice(1).map((item) => (
                 <button
                   key={item.id}
                   onClick={() => handleNav(item.id)}
                   className={cn(
-                    "flex items-center gap-3 rounded-xl px-4 py-3 text-left text-sm font-medium transition-colors",
+                    "flex items-center justify-between rounded-md px-3 py-2.5 text-left text-sm font-medium transition-colors",
                     active === item.id
-                      ? "bg-primary/10 text-primary"
-                      : "text-muted-foreground hover:bg-muted hover:text-foreground",
+                      ? "bg-muted text-foreground"
+                      : "text-muted-foreground hover:bg-muted/60 hover:text-foreground",
                   )}
                 >
-                  <item.icon className="h-4 w-4" />
                   {item.label}
+                  <span className="text-xs text-muted-foreground/60">0{sectionMeta.indexOf(item)}</span>
                 </button>
               ))}
-              <a
-                href={profile.whatsappLink}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="mt-2 flex items-center justify-center gap-2 rounded-xl bg-[#25D366] px-4 py-3 text-sm font-semibold text-white shadow-md shadow-[#25D366]/30"
-              >
-                <WhatsAppIcon className="h-4 w-4" />
-                Chat on WhatsApp
-              </a>
+              <div className="mt-3 flex items-center gap-2">
+                <a
+                  href={profile.whatsappLink}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="flex flex-1 items-center justify-center gap-2 rounded-md border border-border px-4 py-2.5 text-sm font-medium text-foreground transition-colors hover:bg-muted"
+                >
+                  <WhatsAppIcon className="h-4 w-4" />
+                  WhatsApp
+                </a>
+                <Button
+                  onClick={() => handleNav("contact")}
+                  className="flex-1 rounded-md"
+                >
+                  Get in touch
+                </Button>
+              </div>
             </div>
           </motion.div>
         )}

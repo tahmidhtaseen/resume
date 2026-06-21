@@ -15,12 +15,12 @@ export function SectionHeading({
   eyebrow,
   title,
   description,
-  align = "center",
+  align = "left",
   className,
 }: SectionHeadingProps) {
   return (
     <motion.div
-      initial={{ opacity: 0, y: 24 }}
+      initial={{ opacity: 0, y: 16 }}
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true, margin: "-80px" }}
       transition={{ duration: 0.5, ease: "easeOut" }}
@@ -30,17 +30,17 @@ export function SectionHeading({
         className,
       )}
     >
-      <span className="inline-flex items-center gap-2 rounded-full border border-primary/30 bg-primary/5 px-4 py-1.5 text-xs font-semibold uppercase tracking-wider text-primary">
-        <span className="h-1.5 w-1.5 rounded-full bg-primary" />
+      <span className="flex items-center gap-2 text-xs font-semibold uppercase tracking-[0.18em] text-primary">
+        <span className="h-px w-6 bg-primary/40" />
         {eyebrow}
       </span>
-      <h2 className="text-3xl font-bold tracking-tight text-foreground sm:text-4xl md:text-5xl">
+      <h2 className="max-w-2xl text-balance text-3xl font-semibold tracking-tight text-foreground sm:text-4xl">
         {title}
       </h2>
       {description && (
         <p
           className={cn(
-            "max-w-2xl text-base text-muted-foreground sm:text-lg",
+            "max-w-2xl text-[15px] leading-relaxed text-muted-foreground",
             align === "center" && "mx-auto",
           )}
         >

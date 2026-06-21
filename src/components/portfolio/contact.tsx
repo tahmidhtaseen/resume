@@ -2,7 +2,7 @@
 
 import * as React from "react";
 import { motion } from "framer-motion";
-import { Send, Mail, Phone, MapPin, Loader2, CheckCircle2, Sparkles, ArrowRight } from "lucide-react";
+import { Send, Mail, Phone, MapPin, Loader2, CheckCircle2, ArrowUpRight } from "lucide-react";
 import { SectionHeading } from "@/components/portfolio/section-heading";
 import { Card, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
@@ -54,7 +54,7 @@ export function Contact() {
       setDone(true);
       setForm({ name: "", email: "", subject: "", message: "" });
       toast({
-        title: "Message sent! 🎉",
+        title: "Message sent!",
         description: "Thanks for reaching out — I'll get back to you soon.",
       });
     } catch {
@@ -69,137 +69,127 @@ export function Contact() {
   };
 
   return (
-    <section id="contact" className="relative py-20 sm:py-28">
-      <div className="pointer-events-none absolute inset-0 -z-10">
-        <div className="absolute left-1/2 top-1/4 h-72 w-[36rem] -translate-x-1/2 rounded-full bg-primary/10 blur-3xl" />
-      </div>
-
-      <div className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
+    <section id="contact" className="relative border-t border-border py-20 sm:py-28">
+      <div className="mx-auto max-w-6xl px-5 sm:px-8 lg:px-8">
         <SectionHeading
-          eyebrow="Get In Touch"
-          title="Let's build something together"
+          eyebrow="Contact"
+          title="Let's build something together."
           description="I'm excited to work with anyone — a startup, an enterprise, a government team, or a fellow student. Drop a message and let's start a conversation."
         />
 
-        <div className="mt-14 grid gap-8 lg:grid-cols-2">
+        <div className="mt-14 grid gap-8 lg:grid-cols-2 lg:gap-12">
           {/* Contact info */}
           <motion.div
-            initial={{ opacity: 0, y: 24 }}
+            initial={{ opacity: 0, y: 16 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, margin: "-60px" }}
             transition={{ duration: 0.5 }}
             className="flex flex-col gap-6"
           >
-            <Card className="flex-1 border-border/70">
-              <CardContent className="flex h-full flex-col p-6 sm:p-7">
-                <div className="inline-flex w-fit items-center gap-2 rounded-full border border-emerald-500/30 bg-emerald-500/10 px-3 py-1 text-xs font-semibold text-emerald-600 dark:text-emerald-400">
-                  <Sparkles className="h-3.5 w-3.5" />
-                  Available for new opportunities
-                </div>
-                <h3 className="mt-4 text-xl font-bold text-foreground">
-                  Ready when you are
-                </h3>
-                <p className="mt-2 text-sm leading-relaxed text-muted-foreground">
-                  Whether you have a question, a project, or just want to say
-                  hello — I&apos;d genuinely love to hear from you. I respond to
-                  every message.
-                </p>
+            <div>
+              <p className="text-[15px] leading-relaxed text-muted-foreground">
+                Whether you have a question, a project, or just want to say
+                hello — I&apos;d genuinely love to hear from you. I respond to
+                every message.
+              </p>
+            </div>
 
-                <div className="mt-6 space-y-3">
-                  {contactInfo.map((item) => {
-                    const Inner = (
-                      <>
-                        <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-primary/10 text-primary">
-                          <item.icon className="h-5 w-5" />
-                        </div>
-                        <div className="min-w-0">
-                          <p className="text-xs font-medium uppercase tracking-wide text-muted-foreground">
-                            {item.label}
-                          </p>
-                          <p className="truncate text-sm font-semibold text-foreground">
-                            {item.value}
-                          </p>
-                        </div>
-                      </>
-                    );
-                    return item.href ? (
-                      <a
-                        key={item.label}
-                        href={item.href}
-                        className="flex items-center gap-3 rounded-2xl border border-border/70 bg-background/40 p-3 transition-all hover:border-primary/40 hover:bg-primary/5"
-                      >
-                        {Inner}
-                      </a>
-                    ) : (
-                      <div
-                        key={item.label}
-                        className="flex items-center gap-3 rounded-2xl border border-border/70 bg-background/40 p-3"
-                      >
-                        {Inner}
-                      </div>
-                    );
-                  })}
-                </div>
-
-                <div className="mt-6">
-                  <p className="text-xs font-medium uppercase tracking-wide text-muted-foreground">
-                    Find me online
-                  </p>
-                  <div className="mt-2 flex flex-wrap gap-2">
-                    {socials.map((s) => (
-                      <a
-                        key={s.label}
-                        href={s.href}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        aria-label={s.label}
-                        className="flex h-10 w-10 items-center justify-center rounded-xl border border-border bg-background text-muted-foreground transition-all hover:-translate-y-0.5 hover:border-primary hover:text-primary"
-                      >
-                        <s.icon className="h-[18px] w-[18px]" />
-                      </a>
-                    ))}
+            {/* Contact rows */}
+            <div className="divide-y divide-border border-y border-border">
+              {contactInfo.map((item) => {
+                const Inner = (
+                  <>
+                    <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-lg border border-border text-primary">
+                      <item.icon className="h-[18px] w-[18px]" />
+                    </div>
+                    <div className="min-w-0">
+                      <p className="text-[11px] font-medium uppercase tracking-wide text-muted-foreground">
+                        {item.label}
+                      </p>
+                      <p className="truncate text-sm font-medium text-foreground">
+                        {item.value}
+                      </p>
+                    </div>
+                    <ArrowUpRight className="ml-auto h-4 w-4 shrink-0 text-muted-foreground opacity-0 transition-opacity group-hover:opacity-100" />
+                  </>
+                );
+                return item.href ? (
+                  <a
+                    key={item.label}
+                    href={item.href}
+                    className="group flex items-center gap-3 py-4 transition-colors hover:bg-muted/30"
+                  >
+                    {Inner}
+                  </a>
+                ) : (
+                  <div
+                    key={item.label}
+                    className="group flex items-center gap-3 py-4"
+                  >
+                    {Inner}
                   </div>
-                </div>
-              </CardContent>
-            </Card>
+                );
+              })}
+            </div>
 
-            {/* Prominent WhatsApp CTA */}
+            {/* WhatsApp CTA */}
             <a
               href={profile.whatsappLink}
               target="_blank"
               rel="noopener noreferrer"
-              className="group flex items-center gap-4 rounded-2xl border border-[#25D366]/30 bg-[#25D366]/5 p-5 transition-all hover:border-[#25D366]/60 hover:bg-[#25D366]/10"
+              className="group flex items-center gap-4 rounded-xl border border-border bg-card p-5 transition-colors hover:border-foreground/30"
             >
-              <span className="flex h-12 w-12 shrink-0 items-center justify-center rounded-2xl bg-[#25D366] text-white shadow-lg shadow-[#25D366]/30 transition-transform group-hover:scale-105">
+              <span className="flex h-12 w-12 shrink-0 items-center justify-center rounded-lg bg-primary text-primary-foreground">
                 <WhatsAppIcon className="h-6 w-6" />
               </span>
               <div className="min-w-0 flex-1">
-                <p className="text-sm font-bold text-foreground">
+                <p className="text-sm font-semibold text-foreground">
                   Chat on WhatsApp
                 </p>
                 <p className="truncate text-sm text-muted-foreground">
                   {profile.phoneDisplay} — fastest way to reach me
                 </p>
               </div>
-              <ArrowRight className="h-5 w-5 shrink-0 text-[#1ebe5d] transition-transform group-hover:translate-x-1" />
+              <ArrowUpRight className="h-5 w-5 shrink-0 text-muted-foreground transition-transform group-hover:-translate-y-0.5 group-hover:translate-x-0.5" />
             </a>
+
+            {/* Socials */}
+            <div>
+              <p className="text-[11px] font-semibold uppercase tracking-[0.16em] text-muted-foreground">
+                Find me online
+              </p>
+              <div className="mt-3 flex flex-wrap gap-2">
+                {socials.map((s) => (
+                  <a
+                    key={s.label}
+                    href={s.href}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    aria-label={s.label}
+                    className="flex h-10 w-10 items-center justify-center rounded-lg border border-border bg-card text-muted-foreground transition-colors hover:border-foreground/30 hover:text-foreground"
+                  >
+                    <s.icon className="h-[17px] w-[17px]" />
+                  </a>
+                ))}
+              </div>
+            </div>
           </motion.div>
 
           {/* Form */}
           <motion.div
-            initial={{ opacity: 0, y: 24 }}
+            initial={{ opacity: 0, y: 16 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, margin: "-60px" }}
             transition={{ duration: 0.5, delay: 0.1 }}
           >
-            <Card className="h-full border-border/70">
+            <Card className="h-full border-border">
               <CardContent className="p-6 sm:p-7">
                 {done ? (
                   <div className="flex h-full min-h-[24rem] flex-col items-center justify-center text-center">
-                    <div className="flex h-16 w-16 items-center justify-center rounded-full bg-emerald-500/10 text-emerald-500">
-                      <CheckCircle2 className="h-9 w-9" />
+                    <div className="flex h-14 w-14 items-center justify-center rounded-full bg-primary/10 text-primary">
+                      <CheckCircle2 className="h-7 w-7" />
                     </div>
-                    <h3 className="mt-4 text-xl font-bold text-foreground">
+                    <h3 className="mt-4 text-lg font-semibold text-foreground">
                       Message received!
                     </h3>
                     <p className="mt-2 max-w-sm text-sm text-muted-foreground">
@@ -209,7 +199,7 @@ export function Contact() {
                     </p>
                     <Button
                       variant="outline"
-                      className="mt-6 rounded-full"
+                      className="mt-6 rounded-md"
                       onClick={() => setDone(false)}
                     >
                       Send another message
@@ -219,7 +209,9 @@ export function Contact() {
                   <form onSubmit={handleSubmit} className="space-y-4">
                     <div className="grid gap-4 sm:grid-cols-2">
                       <div className="space-y-2">
-                        <Label htmlFor="name">Your Name</Label>
+                        <Label htmlFor="name" className="text-xs font-medium uppercase tracking-wide text-muted-foreground">
+                          Your name
+                        </Label>
                         <Input
                           id="name"
                           name="name"
@@ -227,10 +219,13 @@ export function Contact() {
                           value={form.name}
                           onChange={handleChange}
                           autoComplete="name"
+                          className="h-10"
                         />
                       </div>
                       <div className="space-y-2">
-                        <Label htmlFor="email">Email Address</Label>
+                        <Label htmlFor="email" className="text-xs font-medium uppercase tracking-wide text-muted-foreground">
+                          Email address
+                        </Label>
                         <Input
                           id="email"
                           name="email"
@@ -239,21 +234,27 @@ export function Contact() {
                           value={form.email}
                           onChange={handleChange}
                           autoComplete="email"
+                          className="h-10"
                         />
                       </div>
                     </div>
                     <div className="space-y-2">
-                      <Label htmlFor="subject">Subject</Label>
+                      <Label htmlFor="subject" className="text-xs font-medium uppercase tracking-wide text-muted-foreground">
+                        Subject
+                      </Label>
                       <Input
                         id="subject"
                         name="subject"
                         placeholder="Let's work together on..."
                         value={form.subject}
                         onChange={handleChange}
+                        className="h-10"
                       />
                     </div>
                     <div className="space-y-2">
-                      <Label htmlFor="message">Message</Label>
+                      <Label htmlFor="message" className="text-xs font-medium uppercase tracking-wide text-muted-foreground">
+                        Message
+                      </Label>
                       <Textarea
                         id="message"
                         name="message"
@@ -268,7 +269,7 @@ export function Contact() {
                       type="submit"
                       size="lg"
                       disabled={submitting}
-                      className="w-full rounded-full shadow-lg shadow-primary/25"
+                      className="w-full rounded-md"
                     >
                       {submitting ? (
                         <>
@@ -278,19 +279,10 @@ export function Contact() {
                       ) : (
                         <>
                           <Send className="mr-2 h-4 w-4" />
-                          Send Message
+                          Send message
                         </>
                       )}
                     </Button>
-                    <p className="text-center text-xs text-muted-foreground">
-                      Your message goes straight to{" "}
-                      <a
-                        href={`mailto:${profile.email}`}
-                        className="font-medium text-primary hover:underline"
-                      >
-                        {profile.email}
-                      </a>
-                    </p>
                   </form>
                 )}
               </CardContent>
