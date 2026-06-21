@@ -6,6 +6,7 @@ import { motion, AnimatePresence } from "framer-motion";
 import { Menu, X, Terminal } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { ThemeToggle } from "@/components/portfolio/theme-toggle";
+import { WhatsAppIcon } from "@/components/portfolio/whatsapp-icon";
 import { sectionMeta, profile } from "@/lib/portfolio-data";
 import { cn } from "@/lib/utils";
 
@@ -98,6 +99,15 @@ export function Navbar() {
 
         <div className="flex items-center gap-1.5">
           <ThemeToggle />
+          <a
+            href={profile.whatsappLink}
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label="Chat on WhatsApp"
+            className="flex h-9 w-9 items-center justify-center rounded-full bg-[#25D366] text-white shadow-md shadow-[#25D366]/30 transition-transform hover:scale-105"
+          >
+            <WhatsAppIcon className="h-[18px] w-[18px]" />
+          </a>
           <Button
             size="sm"
             onClick={() => handleNav("contact")}
@@ -143,6 +153,15 @@ export function Navbar() {
                   {item.label}
                 </button>
               ))}
+              <a
+                href={profile.whatsappLink}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="mt-2 flex items-center justify-center gap-2 rounded-xl bg-[#25D366] px-4 py-3 text-sm font-semibold text-white shadow-md shadow-[#25D366]/30"
+              >
+                <WhatsAppIcon className="h-4 w-4" />
+                Chat on WhatsApp
+              </a>
             </div>
           </motion.div>
         )}

@@ -35,3 +35,34 @@ Stage Summary:
 - Fully responsive (mobile menu + desktop nav), sticky footer, scroll-spy navigation
 - All interactions verified end-to-end via Agent Browser; no console/runtime errors
 - VLM-confirmed visual quality on both light and dark modes
+
+---
+Task ID: 2
+Agent: Main Agent (Z.ai Code)
+Task: Improve professionalism — adjust all alignments for clean/balanced look, remove "THT" icon completely, add WhatsApp icon linked with contact number prominently, ensure full responsiveness, polished modern design with consistent spacing/alignment.
+
+Work Log:
+- Reviewed all current components (hero, contact, footer, navbar) and captured before screenshots
+- VLM analysis of before-state identified: THT logo inconsistency, salesy "100% Ready" stat, unbalanced hero, uneven social spacing
+- Created custom WhatsAppIcon SVG component (lucide has no brand icons) using official WhatsApp glyph
+- Updated portfolio-data.ts: added profile.whatsappLink/phoneDigits/phoneDisplay; added WhatsApp as first item in socials; introduced IconType union type to support both LucideIcon and WhatsAppIcon; replaced salesy stats (100% Ready) with professional ones (Years of Study 4+, Projects Delivered 1)
+- Redesigned Hero: removed THT gradient box completely; card now leads with name + title + "Open to work" badge (name-forward design); added prominent WhatsApp CTA button in hero action row; added WhatsApp reach-me card inside profile card with phone number; centered text on mobile / left-aligned on desktop for balance; used lg:grid-cols-2 for equal columns
+- Updated Contact section: added prominent "Chat on WhatsApp" CTA card below contact info card with phone number; made info card flex-1 to match form height; grid changed to lg:grid-cols-2 for equal columns
+- Updated Footer: added WhatsApp entry to contact list with number; added WhatsApp to socials icon row
+- Created FloatingActions component: persistent floating WhatsApp button (bottom-right, pulsing, with hover tooltip) + scroll-to-top button stacked above; replaced old ScrollToTop
+- Updated Navbar: added WhatsApp quick-link button (green circle) in header right side visible on all breakpoints; added WhatsApp CTA button at bottom of mobile menu
+- Updated page.tsx to use FloatingActions instead of ScrollToTop
+- Deleted old scroll-to-top.tsx component
+- Ran `bun run lint` — clean, no errors
+- Verified dev server log — no runtime errors, all GET / 200
+- Agent Browser verification across breakpoints: 390px mobile (hero centered, buttons wrap, no overflow), 768px tablet (balanced), 1440px desktop (equal columns)
+- VLM confirmed: THT removed from hero card (now name-forward), WhatsApp prominent in hero/contact/navbar/floating, columns equal height, consistent alignment, dark mode correct, WhatsApp green used consistently
+- Verified all 3 WhatsApp links (navbar, hero, floating) point to correct wa.me/8801828289668 with pre-filled message
+
+Stage Summary:
+- "THT" icon completely removed from hero card — replaced with clean name-forward header
+- WhatsApp added in 5 prominent locations: navbar (all breakpoints), hero CTA row, hero profile card, contact section CTA, footer, floating button, mobile menu
+- All WhatsApp links use https://wa.me/8801828289668?text=... with pre-filled greeting
+- Alignments improved: hero centered on mobile/left on desktop, equal 2-column grids, consistent max-w-6xl container, consistent py-20 sm:py-28 section spacing, flex-1 for equal-height cards
+- Fully responsive verified at 390px / 768px / 1440px with no overflow or alignment issues
+- Light + dark modes both verified clean; lint passes; no runtime errors

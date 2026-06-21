@@ -1,6 +1,7 @@
 "use client";
 
 import { Terminal, Heart, Mail, Phone, MapPin, ArrowUp } from "lucide-react";
+import { WhatsAppIcon } from "@/components/portfolio/whatsapp-icon";
 import { profile, sectionMeta, socials } from "@/lib/portfolio-data";
 
 export function Footer() {
@@ -18,7 +19,7 @@ export function Footer() {
   return (
     <footer className="relative mt-auto border-t border-border bg-card/50">
       <div className="mx-auto max-w-6xl px-4 py-12 sm:px-6 lg:px-8">
-        <div className="grid gap-10 md:grid-cols-[1.4fr_1fr_1fr]">
+        <div className="grid gap-10 md:grid-cols-[1.5fr_1fr_1.2fr]">
           {/* Brand */}
           <div>
             <div className="flex items-center gap-2.5">
@@ -34,7 +35,7 @@ export function Footer() {
               support, networks, and collaborating with great people. Always
               open to new opportunities.
             </p>
-            <div className="mt-5 flex gap-2">
+            <div className="mt-5 flex flex-wrap gap-2">
               {socials.map((s) => (
                 <a
                   key={s.label}
@@ -86,11 +87,22 @@ export function Footer() {
               </li>
               <li>
                 <a
-                  href={`tel:${profile.phone.replace(/[^+\d]/g, "")}`}
+                  href={profile.whatsappLink}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="flex items-center gap-2 text-muted-foreground transition-colors hover:text-primary"
+                >
+                  <WhatsAppIcon className="h-4 w-4 shrink-0" />
+                  <span>{profile.phoneDisplay}</span>
+                </a>
+              </li>
+              <li>
+                <a
+                  href={`tel:${profile.phoneDigits}`}
                   className="flex items-center gap-2 text-muted-foreground transition-colors hover:text-primary"
                 >
                   <Phone className="h-4 w-4 shrink-0" />
-                  {profile.phone}
+                  <span>Call {profile.phoneDisplay}</span>
                 </a>
               </li>
               <li className="flex items-start gap-2 text-muted-foreground">

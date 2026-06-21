@@ -1,8 +1,9 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { ArrowRight, Sparkles, MapPin, Mail, Linkedin, Github, Twitter } from "lucide-react";
+import { ArrowRight, Sparkles, MapPin, Mail } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import { WhatsAppIcon } from "@/components/portfolio/whatsapp-icon";
 import { profile, stats, socials } from "@/lib/portfolio-data";
 
 export function Hero() {
@@ -26,9 +27,9 @@ export function Hero() {
       </div>
 
       <div className="mx-auto w-full max-w-6xl px-4 py-16 sm:px-6 lg:px-8">
-        <div className="grid items-center gap-12 lg:grid-cols-[1.15fr_0.85fr]">
+        <div className="grid items-center gap-12 lg:grid-cols-2">
           {/* Left: text */}
-          <div>
+          <div className="text-center lg:text-left">
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
@@ -36,14 +37,14 @@ export function Hero() {
               className="inline-flex items-center gap-2 rounded-full border border-primary/30 bg-primary/5 px-4 py-1.5 text-xs font-semibold text-primary"
             >
               <Sparkles className="h-3.5 w-3.5" />
-              Available & eager to collaborate
+              Available &amp; eager to collaborate
             </motion.div>
 
             <motion.h1
               initial={{ opacity: 0, y: 24 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.55, delay: 0.05 }}
-              className="mt-6 text-4xl font-extrabold leading-[1.05] tracking-tight text-foreground sm:text-5xl lg:text-6xl"
+              className="mt-6 text-4xl font-extrabold leading-[1.08] tracking-tight text-foreground sm:text-5xl lg:text-6xl"
             >
               Hi, I&apos;m{" "}
               <span className="gradient-text">{profile.name}</span>
@@ -62,7 +63,7 @@ export function Hero() {
               initial={{ opacity: 0, y: 24 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.55, delay: 0.18 }}
-              className="mt-5 max-w-xl text-base leading-relaxed text-muted-foreground sm:text-lg"
+              className="mt-5 max-w-xl text-base leading-relaxed text-muted-foreground sm:text-lg lg:mx-0 mx-auto"
             >
               {profile.enthusiasm}
             </motion.p>
@@ -71,7 +72,7 @@ export function Hero() {
               initial={{ opacity: 0, y: 24 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.55, delay: 0.24 }}
-              className="mt-8 flex flex-wrap items-center gap-3"
+              className="mt-8 flex flex-wrap items-center justify-center gap-3 lg:justify-start"
             >
               <Button
                 size="lg"
@@ -79,23 +80,24 @@ export function Hero() {
                 className="rounded-full shadow-lg shadow-primary/25"
               >
                 Let&apos;s Work Together
-                <ArrowRight className="ml-1 h-4 w-4" />
+                <ArrowRight className="ml-1.5 h-4 w-4" />
               </Button>
-              <Button
-                size="lg"
-                variant="outline"
-                onClick={() => scrollTo("experience")}
-                className="rounded-full"
+              <a
+                href={profile.whatsappLink}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex h-11 items-center gap-2 rounded-full bg-[#25D366] px-6 text-sm font-semibold text-white shadow-lg shadow-[#25D366]/30 transition-all hover:-translate-y-0.5 hover:bg-[#1ebe5d]"
               >
-                View My Journey
-              </Button>
+                <WhatsAppIcon className="h-4.5 w-4.5" />
+                WhatsApp Me
+              </a>
             </motion.div>
 
             <motion.div
               initial={{ opacity: 0, y: 24 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.55, delay: 0.3 }}
-              className="mt-8 flex flex-wrap items-center gap-4 text-sm text-muted-foreground"
+              className="mt-8 flex flex-col items-center gap-3 text-sm text-muted-foreground sm:flex-row sm:flex-wrap sm:justify-center lg:justify-start"
             >
               <span className="inline-flex items-center gap-1.5">
                 <MapPin className="h-4 w-4 text-primary" />
@@ -114,7 +116,7 @@ export function Hero() {
               initial={{ opacity: 0, y: 24 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.55, delay: 0.36 }}
-              className="mt-6 flex items-center gap-2"
+              className="mt-6 flex items-center justify-center gap-2.5 lg:justify-start"
             >
               {socials.map((s) => (
                 <a
@@ -125,7 +127,7 @@ export function Hero() {
                   aria-label={s.label}
                   className="flex h-10 w-10 items-center justify-center rounded-full border border-border bg-card text-muted-foreground transition-all hover:-translate-y-0.5 hover:border-primary hover:text-primary"
                 >
-                  <s.icon className="h-4.5 w-4.5" />
+                  <s.icon className="h-[18px] w-[18px]" />
                 </a>
               ))}
             </motion.div>
@@ -138,53 +140,75 @@ export function Hero() {
             transition={{ duration: 0.6, delay: 0.2 }}
             className="relative"
           >
-            <div className="relative mx-auto max-w-sm">
+            <div className="relative mx-auto max-w-md lg:max-w-none">
               {/* Floating accents */}
-              <div className="absolute -right-3 -top-3 h-20 w-20 rounded-2xl bg-amber-400/30 blur-2xl" />
-              <div className="absolute -bottom-4 -left-4 h-24 w-24 rounded-full bg-primary/30 blur-2xl" />
+              <div className="pointer-events-none absolute -right-3 -top-3 h-20 w-20 rounded-2xl bg-amber-400/30 blur-2xl" />
+              <div className="pointer-events-none absolute -bottom-4 -left-4 h-24 w-24 rounded-full bg-primary/30 blur-2xl" />
 
-              <div className="relative overflow-hidden rounded-3xl border border-border bg-card p-6 shadow-xl">
-                <div className="flex items-center gap-4">
-                  <div className="relative flex h-16 w-16 shrink-0 items-center justify-center rounded-2xl bg-gradient-to-br from-primary to-emerald-600 text-2xl font-bold text-primary-foreground shadow-lg">
-                    THT
-                  </div>
+              <div className="relative overflow-hidden rounded-3xl border border-border bg-card p-6 shadow-xl sm:p-7">
+                {/* Header: name-forward, no avatar icon */}
+                <div className="flex items-center justify-between gap-3">
                   <div className="min-w-0">
-                    <p className="truncate text-base font-bold text-foreground">
+                    <p className="truncate text-lg font-bold text-foreground">
                       {profile.name}
                     </p>
                     <p className="truncate text-sm text-muted-foreground">
                       {profile.title}
                     </p>
-                    <div className="mt-1.5 flex items-center gap-1.5">
-                      <span className="relative flex h-2 w-2">
-                        <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-emerald-500 opacity-75" />
-                        <span className="relative inline-flex h-2 w-2 rounded-full bg-emerald-500" />
-                      </span>
-                      <span className="text-xs font-medium text-emerald-600 dark:text-emerald-400">
-                        Open to opportunities
-                      </span>
-                    </div>
                   </div>
+                  <span className="inline-flex shrink-0 items-center gap-1.5 rounded-full border border-emerald-500/30 bg-emerald-500/10 px-2.5 py-1 text-xs font-semibold text-emerald-600 dark:text-emerald-400">
+                    <span className="relative flex h-2 w-2">
+                      <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-emerald-500 opacity-75" />
+                      <span className="relative inline-flex h-2 w-2 rounded-full bg-emerald-500" />
+                    </span>
+                    Open to work
+                  </span>
                 </div>
 
-                <div className="mt-6 grid grid-cols-2 gap-3">
+                {/* Divider */}
+                <div className="my-5 h-px w-full bg-border" />
+
+                {/* Stats */}
+                <div className="grid grid-cols-2 gap-3">
                   {stats.map((stat) => (
                     <div
                       key={stat.label}
-                      className="rounded-2xl border border-border/70 bg-background/60 p-3.5 text-center"
+                      className="rounded-2xl border border-border/70 bg-background/60 p-4 text-center"
                     >
                       <div className="text-2xl font-extrabold text-foreground">
                         {stat.value}
                         <span className="text-primary">{stat.suffix}</span>
                       </div>
-                      <div className="mt-0.5 text-[11px] font-medium uppercase tracking-wide text-muted-foreground">
+                      <div className="mt-1 text-[11px] font-medium uppercase tracking-wide text-muted-foreground">
                         {stat.label}
                       </div>
                     </div>
                   ))}
                 </div>
 
-                <div className="mt-6 rounded-2xl border border-primary/20 bg-primary/5 p-4">
+                {/* WhatsApp CTA */}
+                <a
+                  href={profile.whatsappLink}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="mt-5 flex items-center gap-3 rounded-2xl border border-[#25D366]/30 bg-[#25D366]/5 p-4 transition-all hover:border-[#25D366]/60 hover:bg-[#25D366]/10"
+                >
+                  <span className="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl bg-[#25D366] text-white shadow-md shadow-[#25D366]/30">
+                    <WhatsAppIcon className="h-5 w-5" />
+                  </span>
+                  <div className="min-w-0 flex-1">
+                    <p className="text-xs font-medium uppercase tracking-wide text-muted-foreground">
+                      Reach me instantly
+                    </p>
+                    <p className="truncate text-sm font-bold text-foreground">
+                      {profile.phoneDisplay}
+                    </p>
+                  </div>
+                  <ArrowRight className="h-4 w-4 shrink-0 text-[#1ebe5d]" />
+                </a>
+
+                {/* Currently note */}
+                <div className="mt-4 rounded-2xl border border-primary/20 bg-primary/5 p-4">
                   <p className="text-sm leading-relaxed text-muted-foreground">
                     <span className="font-semibold text-foreground">
                       Currently:

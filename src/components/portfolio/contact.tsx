@@ -2,7 +2,7 @@
 
 import * as React from "react";
 import { motion } from "framer-motion";
-import { Send, Mail, Phone, MapPin, Linkedin, Github, Twitter, Loader2, CheckCircle2, Sparkles } from "lucide-react";
+import { Send, Mail, Phone, MapPin, Loader2, CheckCircle2, Sparkles, ArrowRight } from "lucide-react";
 import { SectionHeading } from "@/components/portfolio/section-heading";
 import { Card, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
@@ -10,6 +10,7 @@ import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Label } from "@/components/ui/label";
 import { useToast } from "@/hooks/use-toast";
+import { WhatsAppIcon } from "@/components/portfolio/whatsapp-icon";
 import { profile, contactInfo, socials } from "@/lib/portfolio-data";
 
 export function Contact() {
@@ -80,7 +81,7 @@ export function Contact() {
           description="I'm excited to work with anyone — a startup, an enterprise, a government team, or a fellow student. Drop a message and let's start a conversation."
         />
 
-        <div className="mt-14 grid gap-8 lg:grid-cols-[1fr_1.1fr]">
+        <div className="mt-14 grid gap-8 lg:grid-cols-2">
           {/* Contact info */}
           <motion.div
             initial={{ opacity: 0, y: 24 }}
@@ -89,9 +90,9 @@ export function Contact() {
             transition={{ duration: 0.5 }}
             className="flex flex-col gap-6"
           >
-            <Card className="overflow-hidden border-border/70">
-              <CardContent className="p-6 sm:p-7">
-                <div className="inline-flex items-center gap-2 rounded-full border border-emerald-500/30 bg-emerald-500/10 px-3 py-1 text-xs font-semibold text-emerald-600 dark:text-emerald-400">
+            <Card className="flex-1 border-border/70">
+              <CardContent className="flex h-full flex-col p-6 sm:p-7">
+                <div className="inline-flex w-fit items-center gap-2 rounded-full border border-emerald-500/30 bg-emerald-500/10 px-3 py-1 text-xs font-semibold text-emerald-600 dark:text-emerald-400">
                   <Sparkles className="h-3.5 w-3.5" />
                   Available for new opportunities
                 </div>
@@ -100,7 +101,7 @@ export function Contact() {
                 </h3>
                 <p className="mt-2 text-sm leading-relaxed text-muted-foreground">
                   Whether you have a question, a project, or just want to say
-                  hello — I'd genuinely love to hear from you. I respond to
+                  hello — I&apos;d genuinely love to hear from you. I respond to
                   every message.
                 </p>
 
@@ -144,7 +145,7 @@ export function Contact() {
                   <p className="text-xs font-medium uppercase tracking-wide text-muted-foreground">
                     Find me online
                   </p>
-                  <div className="mt-2 flex gap-2">
+                  <div className="mt-2 flex flex-wrap gap-2">
                     {socials.map((s) => (
                       <a
                         key={s.label}
@@ -154,13 +155,34 @@ export function Contact() {
                         aria-label={s.label}
                         className="flex h-10 w-10 items-center justify-center rounded-xl border border-border bg-background text-muted-foreground transition-all hover:-translate-y-0.5 hover:border-primary hover:text-primary"
                       >
-                        <s.icon className="h-4.5 w-4.5" />
+                        <s.icon className="h-[18px] w-[18px]" />
                       </a>
                     ))}
                   </div>
                 </div>
               </CardContent>
             </Card>
+
+            {/* Prominent WhatsApp CTA */}
+            <a
+              href={profile.whatsappLink}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="group flex items-center gap-4 rounded-2xl border border-[#25D366]/30 bg-[#25D366]/5 p-5 transition-all hover:border-[#25D366]/60 hover:bg-[#25D366]/10"
+            >
+              <span className="flex h-12 w-12 shrink-0 items-center justify-center rounded-2xl bg-[#25D366] text-white shadow-lg shadow-[#25D366]/30 transition-transform group-hover:scale-105">
+                <WhatsAppIcon className="h-6 w-6" />
+              </span>
+              <div className="min-w-0 flex-1">
+                <p className="text-sm font-bold text-foreground">
+                  Chat on WhatsApp
+                </p>
+                <p className="truncate text-sm text-muted-foreground">
+                  {profile.phoneDisplay} — fastest way to reach me
+                </p>
+              </div>
+              <ArrowRight className="h-5 w-5 shrink-0 text-[#1ebe5d] transition-transform group-hover:translate-x-1" />
+            </a>
           </motion.div>
 
           {/* Form */}
@@ -181,7 +203,7 @@ export function Contact() {
                       Message received!
                     </h3>
                     <p className="mt-2 max-w-sm text-sm text-muted-foreground">
-                      Thank you for reaching out. I'll get back to you at the
+                      Thank you for reaching out. I&apos;ll get back to you at the
                       earliest. In the meantime, feel free to connect on social
                       media.
                     </p>

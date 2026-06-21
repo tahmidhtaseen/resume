@@ -16,6 +16,7 @@ import {
   Twitter,
   type LucideIcon,
 } from "lucide-react";
+import { WhatsAppIcon } from "@/components/portfolio/whatsapp-icon";
 
 export const profile = {
   name: "Tahmid Hossain Ta-Seen",
@@ -25,6 +26,11 @@ export const profile = {
   tagline: "IT Support Engineer & Network Enthusiast",
   email: "tahmidhossain209@gmail.com",
   phone: "+8801828-289668",
+  // Digits-only for wa.me / tel links
+  phoneDigits: "8801828289668",
+  phoneDisplay: "+880 1828-289668",
+  whatsappLink:
+    "https://wa.me/8801828289668?text=Hi%20Tahmid%2C%20I%20came%20across%20your%20portfolio%20and%20I%27d%20love%20to%20connect.",
   location: "Mohammadpur, Dhaka - 1207, Bangladesh",
   dob: "20th September 2004",
   nationality: "Bangladeshi",
@@ -35,12 +41,20 @@ export const profile = {
     "I genuinely love what I do and I'm excited to work with anyone—startups, enterprises, government teams, or fellow students. Whether it's a quick fix or a large-scale deployment, I bring curiosity, reliability, and a collaborative spirit to every project.",
 };
 
+export type IconType = LucideIcon | typeof WhatsAppIcon;
+
 export const socials: {
   label: string;
   href: string;
-  icon: LucideIcon;
+  icon: IconType;
   handle: string;
 }[] = [
+  {
+    label: "WhatsApp",
+    href: "https://wa.me/8801828289668?text=Hi%20Tahmid%2C%20I%20came%20across%20your%20portfolio%20and%20I%27d%20love%20to%20connect.",
+    icon: WhatsAppIcon,
+    handle: "+880 1828-289668",
+  },
   {
     label: "LinkedIn",
     href: "https://linkedin.com/in/tahmidhtaseen",
@@ -61,7 +75,7 @@ export const socials: {
   },
 ];
 
-export const contactInfo: { label: string; value: string; icon: LucideIcon; href?: string }[] = [
+export const contactInfo: { label: string; value: string; icon: IconType; href?: string }[] = [
   {
     label: "Email",
     value: "tahmidhossain209@gmail.com",
@@ -84,8 +98,8 @@ export const contactInfo: { label: string; value: string; icon: LucideIcon; href
 export const stats = [
   { label: "Certifications", value: "2", suffix: "+" },
   { label: "Technical Skills", value: "14", suffix: "+" },
-  { label: "Education Programs", value: "4", suffix: "" },
-  { label: "Ready to Collaborate", value: "100", suffix: "%" },
+  { label: "Years of Study", value: "4", suffix: "+" },
+  { label: "Projects Delivered", value: "1", suffix: "" },
 ];
 
 export const skillCategories: {

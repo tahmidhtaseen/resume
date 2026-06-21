@@ -8,7 +8,7 @@ import { Projects } from "@/components/portfolio/projects";
 import { Certificates } from "@/components/portfolio/certificates";
 import { Contact } from "@/components/portfolio/contact";
 import { Footer } from "@/components/portfolio/footer";
-import { ScrollToTop } from "@/components/portfolio/scroll-to-top";
+import { FloatingActions } from "@/components/portfolio/floating-actions";
 
 export default function Home() {
   return (
@@ -25,7 +25,7 @@ export default function Home() {
         <Contact />
       </main>
       <Footer />
-      <ScrollToTop />
+      <FloatingActions />
     </div>
   );
 }
