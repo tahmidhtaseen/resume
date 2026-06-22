@@ -1,13 +1,17 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { Calendar, Building2, CheckCircle2 } from "lucide-react";
+import { Calendar, Building2 } from "lucide-react";
 import { SectionHeading } from "@/components/portfolio/section-heading";
+import { ResultPoints } from "@/components/portfolio/result-points";
 import { projects } from "@/lib/portfolio-data";
 
 export function Projects() {
   return (
-    <section id="projects" className="relative border-t border-border py-20 sm:py-28">
+    <section
+      id="projects"
+      className="relative border-t border-border py-20 sm:py-28"
+    >
       <div className="mx-auto max-w-5xl px-5 sm:px-8 lg:px-8">
         <SectionHeading
           eyebrow="Projects"
@@ -47,17 +51,7 @@ export function Projects() {
                   {project.description}
                 </p>
 
-                <ul className="mt-5 space-y-2">
-                  {project.highlights.map((h) => (
-                    <li
-                      key={h}
-                      className="flex items-start gap-2 text-sm text-foreground/80"
-                    >
-                      <CheckCircle2 className="mt-0.5 h-4 w-4 shrink-0 text-primary" />
-                      <span>{h}</span>
-                    </li>
-                  ))}
-                </ul>
+                <ResultPoints points={project.highlights} baseDelay={0.1} />
 
                 <div className="mt-5 flex flex-wrap gap-1.5">
                   {project.tags.map((tag) => (

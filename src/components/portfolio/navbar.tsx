@@ -135,7 +135,7 @@ export function Navbar() {
             className="overflow-hidden border-b border-border bg-background/95 backdrop-blur-xl md:hidden"
           >
             <div className="flex flex-col gap-0.5 px-5 py-4">
-              {sectionMeta.slice(1).map((item) => (
+              {sectionMeta.slice(1).map((item, idx) => (
                 <button
                   key={item.id}
                   onClick={() => handleNav(item.id)}
@@ -147,7 +147,9 @@ export function Navbar() {
                   )}
                 >
                   {item.label}
-                  <span className="text-xs text-muted-foreground/60">0{sectionMeta.indexOf(item)}</span>
+                  <span className="text-xs tabular-nums text-muted-foreground/60">
+                    {String(idx + 1).padStart(2, "0")}
+                  </span>
                 </button>
               ))}
               <div className="mt-3 flex items-center gap-2">

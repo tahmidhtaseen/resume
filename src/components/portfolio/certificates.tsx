@@ -7,7 +7,10 @@ import { certificates, interests } from "@/lib/portfolio-data";
 
 export function Certificates() {
   return (
-    <section id="certificates" className="relative border-t border-border py-20 sm:py-28">
+    <section
+      id="certificates"
+      className="relative border-t border-border py-20 sm:py-28"
+    >
       <div className="mx-auto max-w-6xl px-5 sm:px-8 lg:px-8">
         <SectionHeading
           eyebrow="Certificates & Interests"
@@ -59,12 +62,15 @@ export function Certificates() {
           <p className="mt-2 text-sm text-muted-foreground">
             The interests that recharge me and shape how I connect with people.
           </p>
-          <div className="mt-5 flex flex-wrap gap-2">
-            {interests.map((interest, idx) => (
+          <div className="mt-5 flex flex-wrap gap-2.5">
+            {interests.map((interest) => (
               <span
                 key={interest.label}
-                className="inline-flex items-center rounded-full border border-border bg-muted/30 px-3.5 py-1.5 text-sm font-medium text-foreground/80"
+                className="inline-flex items-center gap-2 rounded-full border border-border bg-muted/30 px-4 py-2 text-sm font-medium text-foreground/80"
               >
+                <span className="text-base leading-none">
+                  {interest.emoji}
+                </span>
                 {interest.label}
               </span>
             ))}

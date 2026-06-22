@@ -1,13 +1,17 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { MapPin, CheckCircle2 } from "lucide-react";
+import { MapPin } from "lucide-react";
 import { SectionHeading } from "@/components/portfolio/section-heading";
+import { ResultPoints } from "@/components/portfolio/result-points";
 import { experiences } from "@/lib/portfolio-data";
 
 export function Experience() {
   return (
-    <section id="experience" className="relative border-t border-border py-20 sm:py-28">
+    <section
+      id="experience"
+      className="relative border-t border-border py-20 sm:py-28"
+    >
       <div className="mx-auto max-w-4xl px-5 sm:px-8 lg:px-8">
         <SectionHeading
           eyebrow="Experience"
@@ -28,7 +32,7 @@ export function Experience() {
               {/* Timeline rail */}
               <div className="flex flex-col items-center">
                 <span className="flex h-9 w-9 items-center justify-center rounded-full border border-border bg-card text-xs font-semibold text-primary">
-                  0{idx + 1}
+                  {String(idx + 1).padStart(2, "0")}
                 </span>
                 {idx < experiences.length - 1 && (
                   <span className="mt-1 w-px flex-1 bg-border" />
@@ -55,17 +59,9 @@ export function Experience() {
                 <p className="mt-4 text-[15px] leading-relaxed text-muted-foreground">
                   {exp.description}
                 </p>
-                <ul className="mt-4 space-y-2">
-                  {exp.highlights.map((h) => (
-                    <li
-                      key={h}
-                      className="flex items-start gap-2 text-sm text-foreground/80"
-                    >
-                      <CheckCircle2 className="mt-0.5 h-4 w-4 shrink-0 text-primary" />
-                      <span>{h}</span>
-                    </li>
-                  ))}
-                </ul>
+
+                <ResultPoints points={exp.highlights} baseDelay={0.1} />
+
                 <div className="mt-4 flex flex-wrap gap-1.5">
                   {exp.tags.map((tag) => (
                     <span
