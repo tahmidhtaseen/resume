@@ -9,9 +9,10 @@ export function Skills() {
     <section id="skills" className="relative border-t border-border py-20 sm:py-28">
       <div className="mx-auto max-w-6xl px-5 sm:px-8 lg:px-8">
         <SectionHeading
-          eyebrow="Skills"
-          title="Tools I use to keep systems running."
-          description="A practical toolkit built through formal study, industrial attachment, and real-world deployment work."
+          index="02"
+          eyebrow="Skills & Expertise"
+          title="A practical toolkit, refined in the field."
+          description="Capabilities developed through formal study, industrial attachment, and hands-on deployment work across networking, systems, and support operations."
         />
 
         <div className="mt-14 grid gap-px overflow-hidden rounded-xl border border-border bg-border md:grid-cols-2">

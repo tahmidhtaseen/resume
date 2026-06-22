@@ -14,9 +14,10 @@ export function Projects() {
     >
       <div className="mx-auto max-w-5xl px-5 sm:px-8 lg:px-8">
         <SectionHeading
-          eyebrow="Projects"
-          title="Work that made a difference."
-          description="Initiatives where I contributed to systems with real-world impact."
+          index="05"
+          eyebrow="Selected Projects"
+          title="Work that has made a measurable difference."
+          description="Initiatives in which I contributed to systems delivering real-world impact for public-sector and educational stakeholders."
         />
 
         <div className="mt-14 grid gap-6">

@@ -72,9 +72,10 @@ export function Contact() {
     <section id="contact" className="relative border-t border-border py-20 sm:py-28">
       <div className="mx-auto max-w-6xl px-5 sm:px-8 lg:px-8">
         <SectionHeading
-          eyebrow="Contact"
-          title="Let's build something together."
-          description="I'm excited to work with anyone — a startup, an enterprise, a government team, or a fellow student. Drop a message and let's start a conversation."
+          index="07"
+          eyebrow="Get in Touch"
+          title="Let us build something together."
+          description="I welcome the opportunity to work with anyone — a startup, an enterprise, a government team, or a fellow student. Send a message and begin the conversation."
         />
 
         <div className="mt-14 grid gap-8 lg:grid-cols-2 lg:gap-12">

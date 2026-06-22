@@ -34,7 +34,7 @@ export const profile = {
   summary:
     "A motivated computer science diploma candidate with hands-on experience in IT support, network troubleshooting, and hardware maintenance. I recently worked as a Support Engineer at Avant Technology Limited, contributing to critical surveillance system deployments for the Bangladesh Police. I completed my industrial attachment at Tech Elevate Ltd., where I sharpened my ability to diagnose connectivity issues, deliver on-site support, and collaborate effectively within technical teams.",
   enthusiasm:
-    "I genuinely love what I do and I'm excited to work with anyone—startups, enterprises, government teams, or fellow students. Whether it's a quick fix or a large-scale deployment, I bring curiosity, reliability, and a collaborative spirit to every project.",
+    "I genuinely love what I do, and I am excited to work with anyone — startups, enterprises, government teams, or fellow students. Whether it is a quick fix or a large-scale deployment, I bring curiosity, reliability, and a collaborative spirit to every engagement.",
 };
 
 export const socials: {
@@ -303,13 +303,13 @@ export const languages = [
   { name: "English", level: "Professional", proficiency: 80 },
 ];
 
-export const sectionMeta: { id: string; label: string }[] = [
-  { id: "home", label: "Home" },
-  { id: "about", label: "About" },
-  { id: "skills", label: "Skills" },
-  { id: "experience", label: "Experience" },
-  { id: "education", label: "Education" },
-  { id: "projects", label: "Projects" },
-  { id: "certificates", label: "Certificates" },
-  { id: "contact", label: "Contact" },
+export const sectionMeta: { id: string; label: string; index: string }[] = [
+  { id: "home", label: "Home", index: "00" },
+  { id: "about", label: "About", index: "01" },
+  { id: "skills", label: "Skills", index: "02" },
+  { id: "experience", label: "Experience", index: "03" },
+  { id: "education", label: "Education", index: "04" },
+  { id: "projects", label: "Projects", index: "05" },
+  { id: "certificates", label: "Certificates", index: "06" },
+  { id: "contact", label: "Contact", index: "07" },
 ];

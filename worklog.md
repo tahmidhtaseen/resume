@@ -133,3 +133,50 @@ Stage Summary:
 - Codebase cleaned: removed ~40 lines of dead data (unused fields, references array, 9 icon imports); removed hacky indexOf; added ResultPoint type for type safety
 - Zero errors: lint clean, no runtime/console errors, all API routes 200, contact form verified end-to-end
 - Fully responsive + dark mode verified for all new highlighted elements
+
+---
+Task ID: 5
+Agent: Main Agent (Z.ai Code)
+Task: Organise everything to look more professional, formal, and creative. Clean up entire codebase by deleting all unnecessary things. Organise all files neatly into folders.
+
+Work Log:
+- Audited entire codebase: listed all 21 portfolio component files, found 31 stale root screenshots, 1 placeholder api/route.ts, dead data fields already removed in prior task
+- Deleted 31 stale PNG screenshots from project root
+- Deleted placeholder src/app/api/route.ts (the "Hello, world!" default)
+- Created organized folder structure: src/components/portfolio/sections/ (8 page sections) and src/components/portfolio/layout/ (navbar, footer, floating-actions, theme-provider, theme-toggle)
+- Moved 8 section components (hero, about, skills, experience, education, projects, certificates, contact) into sections/
+- Moved 5 layout components (navbar, footer, floating-actions, theme-provider, theme-toggle) into layout/
+- Kept 3 shared primitives at portfolio root: section-heading, result-points, whatsapp-icon
+- Updated src/app/page.tsx imports to use new section/ and layout/ paths
+- Updated src/app/layout.tsx ThemeProvider import to layout/theme-provider
+- Fixed navbar's internal import of theme-toggle to layout/theme-toggle
+- Verified all other imports resolve (primitives at root still reachable via @/components/portfolio/...)
+- Added formal index numbers to sectionMeta (00-07) for a consistent numbering system
+- Redesigned SectionHeading: formal "00" mono-font index + rule line + uppercase tracked eyebrow (replacing previous centered layout); removed align prop (now always left for consistency)
+- Updated all 7 section components to pass new index prop (01-07) with refined formal copy:
+  * About: "An introduction to the person behind the certifications..." + renamed "My promise" to "My commitment" + used semantic <figure>
+  * Skills: "A practical toolkit, refined in the field." + "Capabilities developed through formal study..."
+  * Experience: "Roles where I have delivered measurable impact." + "A record of the positions..."
+  * Education: "A foundation built on continuous learning." + "each stage has shaped my analytical approach..."
+  * Projects: "Work that has made a measurable difference." + "public-sector and educational stakeholders"
+  * Certificates: "Formal credentials, and the interests that keep me grounded." + "Industry-recognised certifications..."
+  * Contact: "Let us build something together." + "I welcome the opportunity to work with anyone..."
+- Updated Hero: added formal "00" index marker + rule line at top; "Available for new opportunities"; "Current role" label; "Reach me directly"
+- Refined enthusiasm copy to be more formal ("I am excited" instead of "I'm excited", "engagement" instead of "project")
+- Updated navbar mobile menu to use sectionMeta.index (mono font) instead of computed index
+- Updated footer Navigate links to show mono index numbers before labels
+- Ran `bun run lint` — clean, no errors
+- Fresh-load browser check: console shows only React DevTools info + HMR (zero runtime errors)
+- VLM verified: hero "00" mono index + rule line + formal copy; skills section "02" numbering; footer index numbers 01-07; mobile menu index numbers; dark mode numbering readable
+- Verified contact form end-to-end: fills → submit → POST /api/contact 200 → Prisma INSERT → "Message received!" success
+
+Stage Summary:
+- Codebase fully reorganized into clean folder structure:
+  * src/components/portfolio/sections/ — 8 page sections
+  * src/components/portfolio/layout/ — navbar, footer, floating-actions, theme provider/toggle
+  * src/components/portfolio/ (root) — 3 shared primitives
+- Deleted all unnecessary files: 31 stale screenshots, placeholder API route
+- Formal numbering system (00-07) applied consistently across hero, all section headings, mobile menu, and footer navigation using mono font + rule line
+- All copy refined to be more professional and formal (third-person phrasing, "engagement" vs "project", "recognised" spelling, etc.)
+- Zero errors: lint clean, no runtime/console errors, contact form verified end-to-end with DB insert
+- Fully responsive + dark mode verified for all new formal elements

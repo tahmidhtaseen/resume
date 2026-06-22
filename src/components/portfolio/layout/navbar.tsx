@@ -5,7 +5,7 @@ import Link from "next/link";
 import { motion, AnimatePresence } from "framer-motion";
 import { Menu, X } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import { ThemeToggle } from "@/components/portfolio/theme-toggle";
+import { ThemeToggle } from "@/components/portfolio/layout/theme-toggle";
 import { WhatsAppIcon } from "@/components/portfolio/whatsapp-icon";
 import { sectionMeta, profile } from "@/lib/portfolio-data";
 import { cn } from "@/lib/utils";
@@ -135,7 +135,7 @@ export function Navbar() {
             className="overflow-hidden border-b border-border bg-background/95 backdrop-blur-xl md:hidden"
           >
             <div className="flex flex-col gap-0.5 px-5 py-4">
-              {sectionMeta.slice(1).map((item, idx) => (
+              {sectionMeta.slice(1).map((item) => (
                 <button
                   key={item.id}
                   onClick={() => handleNav(item.id)}
@@ -147,8 +147,8 @@ export function Navbar() {
                   )}
                 >
                   {item.label}
-                  <span className="text-xs tabular-nums text-muted-foreground/60">
-                    {String(idx + 1).padStart(2, "0")}
+                  <span className="font-mono text-xs tabular-nums text-muted-foreground/60">
+                    {item.index}
                   </span>
                 </button>
               ))}

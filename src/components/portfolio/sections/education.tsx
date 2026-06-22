@@ -13,9 +13,10 @@ export function Education() {
     >
       <div className="mx-auto max-w-5xl px-5 sm:px-8 lg:px-8">
         <SectionHeading
+          index="04"
           eyebrow="Education"
-          title="A foundation in continuous learning."
-          description="From madrasah to diploma to university — each step has shaped how I think and solve problems."
+          title="A foundation built on continuous learning."
+          description="From secondary school through diploma and into university — each stage has shaped my analytical approach and problem-solving discipline."
         />
 
         <div className="mt-14 grid gap-px overflow-hidden rounded-xl border border-border bg-border">

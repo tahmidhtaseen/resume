@@ -13,9 +13,10 @@ export function Certificates() {
     >
       <div className="mx-auto max-w-6xl px-5 sm:px-8 lg:px-8">
         <SectionHeading
-          eyebrow="Certificates & Interests"
-          title="Certified skills, human interests."
-          description="Formal credentials that back up my expertise — and the passions that keep me balanced."
+          index="06"
+          eyebrow="Certifications & Interests"
+          title="Formal credentials, and the interests that keep me grounded."
+          description="Industry-recognised certifications that validate my expertise, alongside the pursuits that provide balance and perspective."
         />
 
         {/* Certificates */}

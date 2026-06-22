@@ -32,9 +32,10 @@ export function About() {
     <section id="about" className="relative border-t border-border py-20 sm:py-28">
       <div className="mx-auto max-w-6xl px-5 sm:px-8 lg:px-8">
         <SectionHeading
+          index="01"
           eyebrow="About"
           title="Enthusiastic by nature, professional by choice."
-          description="Get to know the person behind the certifications — what drives me and how I approach my work."
+          description="An introduction to the person behind the certifications — what drives my work and how I approach every engagement."
         />
 
         <div className="mt-14 grid gap-12 lg:grid-cols-[1.4fr_1fr] lg:gap-16">
@@ -48,14 +49,14 @@ export function About() {
             <p className="text-lg leading-relaxed text-foreground/90">
               {profile.summary}
             </p>
-            <div className="mt-6 border-l-2 border-primary/40 pl-5">
+            <figure className="mt-6 border-l-2 border-primary/40 pl-5">
               <p className="text-[15px] leading-relaxed text-muted-foreground">
                 <span className="font-semibold text-foreground">
-                  My promise:
+                  My commitment:
                 </span>{" "}
                 {profile.enthusiasm}
               </p>
-            </div>
+            </figure>
           </motion.div>
 
           {/* Languages + quick facts */}

@@ -4,18 +4,19 @@ import { motion } from "framer-motion";
 import { cn } from "@/lib/utils";
 
 interface SectionHeadingProps {
+  /** Formal index, e.g. "01". */
+  index: string;
   eyebrow: string;
   title: string;
   description?: string;
-  align?: "left" | "center";
   className?: string;
 }
 
 export function SectionHeading({
+  index,
   eyebrow,
   title,
   description,
-  align = "left",
   className,
 }: SectionHeadingProps) {
   return (
@@ -24,26 +25,24 @@ export function SectionHeading({
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true, margin: "-80px" }}
       transition={{ duration: 0.5, ease: "easeOut" }}
-      className={cn(
-        "flex flex-col gap-3",
-        align === "center" ? "items-center text-center" : "items-start text-left",
-        className,
-      )}
+      className={cn("flex flex-col gap-4", className)}
     >
-      <span className="flex items-center gap-2 text-xs font-semibold uppercase tracking-[0.18em] text-primary">
-        <span className="h-px w-6 bg-primary/40" />
-        {eyebrow}
-      </span>
+      {/* Eyebrow row: number + label + rule */}
+      <div className="flex items-center gap-3">
+        <span className="font-mono text-xs font-semibold tabular-nums text-primary">
+          {index}
+        </span>
+        <span className="h-px w-8 bg-primary/40" />
+        <span className="text-xs font-semibold uppercase tracking-[0.18em] text-muted-foreground">
+          {eyebrow}
+        </span>
+      </div>
+
       <h2 className="max-w-2xl text-balance text-3xl font-semibold tracking-tight text-foreground sm:text-4xl">
         {title}
       </h2>
       {description && (
-        <p
-          className={cn(
-            "max-w-2xl text-[15px] leading-relaxed text-muted-foreground",
-            align === "center" && "mx-auto",
-          )}
-        >
+        <p className="max-w-2xl text-[15px] leading-relaxed text-muted-foreground">
           {description}
         </p>
       )}

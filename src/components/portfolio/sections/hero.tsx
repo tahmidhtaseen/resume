@@ -25,14 +25,18 @@ export function Hero() {
               initial={{ opacity: 0, y: 12 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5 }}
-              className="flex items-center gap-2.5"
+              className="flex items-center gap-3"
             >
+              <span className="font-mono text-xs font-semibold tabular-nums text-primary">
+                00
+              </span>
+              <span className="h-px w-8 bg-primary/40" />
               <span className="relative flex h-2 w-2">
                 <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-primary opacity-60" />
                 <span className="relative inline-flex h-2 w-2 rounded-full bg-primary" />
               </span>
               <span className="text-xs font-medium uppercase tracking-[0.18em] text-muted-foreground">
-                Available for work
+                Available for new opportunities
               </span>
             </motion.div>
 
@@ -106,7 +110,7 @@ export function Hero() {
               <div className="flex items-center justify-between">
                 <div>
                   <p className="text-[11px] font-semibold uppercase tracking-[0.16em] text-muted-foreground">
-                    Currently
+                    Current role
                   </p>
                   <p className="mt-1 text-sm font-medium text-foreground">
                     Support Engineer
@@ -152,7 +156,7 @@ export function Hero() {
                 </span>
                 <div className="min-w-0 flex-1">
                   <p className="text-[11px] font-medium uppercase tracking-wide text-muted-foreground">
-                    Reach me instantly
+                    Reach me directly
                   </p>
                   <p className="truncate text-sm font-semibold text-foreground">
                     {profile.phoneDisplay}

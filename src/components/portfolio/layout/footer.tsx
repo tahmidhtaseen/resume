@@ -59,8 +59,11 @@ export function Footer() {
                 <li key={item.id}>
                   <button
                     onClick={() => handleNav(item.id)}
-                    className="text-sm text-muted-foreground transition-colors hover:text-foreground"
+                    className="flex items-center gap-2 text-sm text-muted-foreground transition-colors hover:text-foreground"
                   >
+                    <span className="font-mono text-[11px] tabular-nums text-muted-foreground/50">
+                      {item.index}
+                    </span>
                     {item.label}
                   </button>
                 </li>

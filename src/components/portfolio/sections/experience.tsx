@@ -14,9 +14,10 @@ export function Experience() {
     >
       <div className="mx-auto max-w-4xl px-5 sm:px-8 lg:px-8">
         <SectionHeading
-          eyebrow="Experience"
-          title="Where I've made an impact."
-          description="Real-world roles where I've delivered support, deployed systems, and grown as a professional."
+          index="03"
+          eyebrow="Professional Experience"
+          title="Roles where I have delivered measurable impact."
+          description="A record of the positions in which I have provided support, deployed systems, and grown as a professional."
         />
 
         <div className="mt-14">
