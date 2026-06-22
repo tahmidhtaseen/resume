@@ -180,3 +180,45 @@ Stage Summary:
 - All copy refined to be more professional and formal (third-person phrasing, "engagement" vs "project", "recognised" spelling, etc.)
 - Zero errors: lint clean, no runtime/console errors, contact form verified end-to-end with DB insert
 - Fully responsive + dark mode verified for all new formal elements
+
+---
+Task ID: 6
+Agent: Main Agent (Z.ai Code)
+Task: Make arrangements so the website ranks in search engines (comprehensive SEO setup).
+
+Work Log:
+- Audited current SEO: had basic metadata (title/description/keywords/OG/twitter) but missing metadataBase, canonical, robots directives, structured data, sitemap, OG image, favicon, manifest; static robots.txt existed without sitemap reference
+- Created src/lib/site-config.ts: central config (name, title, description, url, locale, themeColor, keywords, author, social links) — single source of truth; documented that url must be updated on deploy
+- Created src/components/portfolio/structured-data.tsx: JSON-LD Person schema (name, jobTitle, email, telephone, nationality, PostalAddress, knowsAbout=14 skills, knowsLanguage, sameAs=3 socials, worksFor=Avant Technology, alumniOf=2 schools) + WebSite schema; rendered as two ld+json scripts in <head>
+- Rewrote src/app/layout.tsx: added metadataBase, title template, canonical, robots (index/follow + googlebot max-image-preview:large), category, creator/publisher, full OG with 1200x630 image, Twitter card with creator, icons (icon + apple-icon), manifest link, viewport themeColor (light/dark); injected <StructuredData/> into <head>
+- Created src/app/sitemap.ts: dynamic sitemap listing homepage (priority 1) + all 8 sections (priority 0.8), monthly changeFrequency, served at /sitemap.xml
+- Created src/app/robots.ts: dynamic robots.txt allowing all crawlers + Sitemap directive + Host, replaced static public/robots.txt (deleted)
+- Created src/app/opengraph-image.tsx: dynamic 1200x630 OG image via next/og ImageResponse (edge runtime) — branded card with AVAILABLE FOR WORK badge, name, "IT Support Engineer & Network Enthusiast" title, summary, credentials row (MTCNA/CompTIA A+/Dhaka BD), email; fixed Satori "display: flex" requirement for multi-child divs
+- Created src/app/icon.tsx: dynamic 32x32 favicon — teal rounded square with "TT" monogram
+- Created src/app/apple-icon.tsx: dynamic 180x180 apple touch icon — teal "TT" monogram
+- Created src/app/manifest.ts: web manifest (name, short_name, description, standalone display, theme_color #0f766e, background_color #fafaf7, icons)
+- Updated src/app/page.tsx: added page-level metadata (title absolute, description, canonical, OG) for explicit per-page SEO
+- Ran `bun run lint` — clean
+- Verified all routes serve correctly via curl:
+  * /robots.txt → User-Agent allow rules + Sitemap + Host
+  * /sitemap.xml → valid XML urlset with 9 URLs + priorities + lastmod
+  * /manifest.webmanifest → valid JSON with PWA metadata
+  * /opengraph-image → HTTP 200, 110KB PNG, image/png
+  * /icon → HTTP 200, image/png
+  * /apple-icon → HTTP 200, image/png
+- Verified HTML head renders: title, description, keywords, author/creator/publisher, canonical, robots+googlebot, category, full OG (title/description/url/image 1200x630/type/image:alt), Twitter (summary_large_image/creator/title), theme-color (light+dark), manifest link, icon + apple-touch-icon links
+- Verified JSON-LD renders: Person schema (all fields populated) + WebSite schema
+- VLM verified OG image content: name, title, AVAILABLE FOR WORK badge, credentials, email all present and professional
+- Fresh-load browser check: console clean (only React DevTools info + HMR), zero runtime errors
+
+Stage Summary:
+- Full SEO infrastructure deployed:
+  * Centralized site config (src/lib/site-config.ts) — update url before deploy
+  * Comprehensive metadata (metadataBase, canonical, robots, OG, Twitter, theme-color, category)
+  * JSON-LD structured data (Person + WebSite schemas) for rich search results / knowledge panels
+  * Dynamic sitemap.xml (9 URLs) + robots.txt with sitemap reference
+  * Dynamic 1200x630 Open Graph image (branded, edge-rendered)
+  * Dynamic favicon + apple touch icon (TT monogram)
+  * Web manifest for PWA/mobile install metadata
+- Zero errors: lint clean, no runtime errors, all SEO routes return 200
+- Note for deploy: user must update siteConfig.url in src/lib/site-config.ts to their production domain so canonical/OG/sitemap/JSON-LD URLs resolve correctly

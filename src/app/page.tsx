@@ -1,3 +1,4 @@
+import type { Metadata } from "next";
 import { Navbar } from "@/components/portfolio/layout/navbar";
 import { Footer } from "@/components/portfolio/layout/footer";
 import { FloatingActions } from "@/components/portfolio/layout/floating-actions";
@@ -9,6 +10,23 @@ import { Education } from "@/components/portfolio/sections/education";
 import { Projects } from "@/components/portfolio/sections/projects";
 import { Certificates } from "@/components/portfolio/sections/certificates";
 import { Contact } from "@/components/portfolio/sections/contact";
+import { siteConfig } from "@/lib/site-config";
+
+export const metadata: Metadata = {
+  title: {
+    absolute: siteConfig.title,
+  },
+  description: siteConfig.description,
+  alternates: {
+    canonical: "/",
+  },
+  openGraph: {
+    title: siteConfig.title,
+    description: siteConfig.description,
+    url: siteConfig.url,
+    type: "website",
+  },
+};
 
 export default function Home() {
   return (
